@@ -5,6 +5,8 @@ This library allows you to programatically interact with the League of Legends r
 ## How to use it:
 Compile the dynamic library. Inject the DLL into a running League of Legends process. By default, the client will listen for commands on UDP port 6000, and send you data on UDP port 7000.
 
+To inject, you can use any of the many publicly available DLL injector tools.
+
 ## How it works:
 
 When running in replay/spectator mode, the League of Legends client uses a Flash-based user interface. This Flash interface is simply a flash movie, which is ran and rendered onto your DirectX surface using the Scaleform flash engine.
