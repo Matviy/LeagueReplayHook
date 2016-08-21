@@ -49,7 +49,7 @@ The following commands are currently available:
 |	replayui_setVisibilityOption_ChampionNames=\<0/1>	|	Enable/Disable champion names.	|
 
 
-## What can i receive? How do i receive them?
+## What dat can i receive? How do i receive it?
 Simply listen on UDP port 7000 to receive the text data.
 
 You receive all commands that are sent by the League of Legends game engine to the interface. This includes stats for all players, gold, spell/skill cooldowns, buff cooldowns, health/mana bars, death timers, and so on.
