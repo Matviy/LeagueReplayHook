@@ -65,3 +65,6 @@ The function signatures used to locate the functions and write hooks were tested
 
 ## Isn't this a script? Can i get banned for this?
 Almost certainly no. None of this will work during a live game (read "How stable/reliable is this?"). This only works for spectate/replay sessions, and cannot provide any form of competitive advantage.
+
+## Who uses this?
+This is a small segement of the code used by Replay.GG for it's features. Hopefully others will find good use for it as well.
