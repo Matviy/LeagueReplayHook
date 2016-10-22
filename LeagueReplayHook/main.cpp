@@ -267,11 +267,15 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 			Error("Fatal Error. Could not find invoke function, check fingerprints / offsets.", true); //Exit
 		}
 		ApplyHook(invoke_address, &CustomInvoke, lost_invoke_bytes);
-		
-		if (fscommand_address == nullptr)
+
+		if (fscommand_address == nullptr){
+#ifdef _DEBUG
 			Error("Could not find FSCommand address, check fingerprints / offsets. Data output will still work, but commands will not.", false);
-		else
-			ApplyHook(fscommand_address, &CustomFsCommand, lost_fs_command_bytes);	
+#endif
+		}
+		else{
+			ApplyHook(fscommand_address, &CustomFsCommand, lost_fs_command_bytes);
+		}
 		
 		//Initialize Winsock
 		WSADATA wsaData;
