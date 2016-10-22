@@ -263,14 +263,16 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 
 		//Get addresses of all needed functions.
 		FindFunctions();
-		if (fscommand_address == nullptr || invoke_address == nullptr){
-			Error("Could not find needed functions, check fingerprints / offsets.", true);
+		if (invoke_address == nullptr){
+			Error("Fatal Error. Could not find invoke function, check fingerprints / offsets.", true); //Exit
 		}
-
-		//Appply the patches to the functions.
 		ApplyHook(invoke_address, &CustomInvoke, lost_invoke_bytes);
-		ApplyHook(fscommand_address, &CustomFsCommand, lost_fs_command_bytes);
-
+		
+		if (fscommand_address == nullptr)
+			Error("Could not find FSCommand address, check fingerprints / offsets. Data output will still work, but commands will not.", false);
+		else
+			ApplyHook(fscommand_address, &CustomFsCommand, lost_fs_command_bytes);	
+		
 		//Initialize Winsock
 		WSADATA wsaData;
 		if (WSAStartup(MAKEWORD(2, 2), &wsaData) != NO_ERROR){
